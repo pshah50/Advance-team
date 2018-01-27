@@ -18,32 +18,35 @@ public class Robot extends IterativeRobot
 	private SpeedController m_motor;
 	private Joystick m_joystick;
 	
-	TestEncoder Tenc = new TestEncoder();
-	Encoder encoder;
+	//TestEncoder enc = new TestEncoder();    // Object of the TestEncoder Class to call method in tele_operated mode.
+	TestEncoder enc; 
+	
+	Ultrasonic_I2C i2c;  // Object of the Ultrasonic_I2C class for getting distance.
+	
+	//Encoder encoder;
 	
 	public void robotInit()
 	{
 		m_motor = new Spark(kMotorPort);
 		m_joystick = new Joystick(kJoystickPort);
-		encoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
+		enc = new TestEncoder();
+		i2c = new Ultrasonic_I2C();
+		//encoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
 	}
 
 	public void teleopInit()
 	{
-		Tenc.encGet();
-		encoder.setMaxPeriod(0.5);
-		encoder.setMinRate(5);
-		encoder.setDistancePerPulse(2);
-		encoder.setReverseDirection(true);
-		encoder.setSamplesToAverage(10);
+		
 	}
 	
 	public void teleopPeriodic() 
 	{
 		m_motor.set(m_joystick.getY());
-		
-		SmartDashboard.putNumber("Distance", encoder.getDistance());
+		enc.encSet();
+		enc.encGet();
+		//i2c.getDistance();
+		/*SmartDashboard.putNumber("Distance", encoder.getDistance());
 		SmartDashboard.putNumber("Rate", encoder.getRate());
-		SmartDashboard.putBoolean("Stopped", encoder.getStopped());
+		SmartDashboard.putBoolean("Stopped", encoder.getStopped());*/
 	}
 }

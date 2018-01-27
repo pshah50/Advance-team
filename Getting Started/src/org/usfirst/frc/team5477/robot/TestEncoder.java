@@ -5,7 +5,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class TestEncoder 
 {
-	Encoder encoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
+	Encoder encoder;
+	
+	public TestEncoder() 
+	{
+		encoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
+	}
+	
 	
 	public void encReset()
 	{
@@ -23,11 +29,9 @@ public class TestEncoder
 	
 	public void encGet()
 	{
-		//	SmartDashboard.putNumber("Counter: ", (double)encoder.get());
-		//SmartDashboard.putNumber("Raw Counter: ", encoder.getRaw());
-		SmartDashboard.putNumber("Distance : ", encoder.getDistance());
-		SmartDashboard.putNumber("Rate : ", encoder.getRate());
-		//SmartDashboard.putBoolean("Direction : ", encoder.getDirection());
-		SmartDashboard.putBoolean("Stop : ", encoder.getStopped());		
+		SmartDashboard.putNumber("Distance", encoder.getDistance());
+		SmartDashboard.putNumber("Rate", encoder.getRate());
+		SmartDashboard.putBoolean("Stopped", encoder.getStopped());
+		
 	}
 }

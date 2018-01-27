@@ -5,11 +5,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Ultrasonic_I2C 
 {
-	I2C i2c = new I2C(I2C.Port.kOnboard,84);
+	I2C i2c;
 	String WriteString = "go";
-	char[] CharArray = WriteString.toCharArray();
-	byte[] WriteData = new byte[CharArray.length];   // Byte array for sending data
-	byte[] ReceievData = new byte[2];				 // Byte array for receiving data of distance from Arduino
+	char[] CharArray;
+	byte[] WriteData;   // Byte array for sending data
+	byte[] ReceievData;
+	
+	public Ultrasonic_I2C()
+	{
+		i2c = new I2C(I2C.Port.kOnboard,84);
+	    CharArray = WriteString.toCharArray();
+		WriteData = new byte[CharArray.length];   // Byte array for sending data
+		ReceievData = new byte[2];				 // Byte array for receiving data as distance in CM from Arduino
+	}
 	
 	public void sendReq()
 	{
