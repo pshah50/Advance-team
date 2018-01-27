@@ -18,7 +18,7 @@ public class Robot extends IterativeRobot
 	private SpeedController m_motor;
 	private Joystick m_joystick;
 	
-	//TestEncoder Tenc = new TestEncoder();
+	TestEncoder Tenc = new TestEncoder();
 	Encoder encoder;
 	
 	public void robotInit()
@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot
 
 	public void teleopInit()
 	{
+		Tenc.encGet();
 		encoder.setMaxPeriod(0.5);
 		encoder.setMinRate(5);
 		encoder.setDistancePerPulse(2);
