@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Ultrasonic_I2C 
 {
 	I2C i2c;
-	
 	char[] CharArray;
 	byte[] WriteData;   // Byte array for sending data
 	byte[] ReceievData;
@@ -30,8 +29,7 @@ public class Ultrasonic_I2C
 			WriteData[i] = (byte) CharArray[i];
 		}
 		
-		bool_transaction = i2c.transaction(WriteData, WriteData.length, ReceievData, 0);  // Sending Data 
-		SmartDashboard.putBoolean("Bool I2C transaction: ", bool_transaction);
+		i2c.transaction(WriteData, WriteData.length, ReceievData, 0);  // Sending Data 
 		
 		try 
 		{
@@ -44,7 +42,8 @@ public class Ultrasonic_I2C
 		}
 	
 		i2c.transaction(WriteData, 0, ReceievData, 2);      // Get the first two byte from the data
-		String s = "";
+		
+		String s = " ";
 		for (int i = 0; i < 1; i++)          //Use first byte only for the distance, Second byte is generally number.
 		{
 			s = s + ReceievData[i];
