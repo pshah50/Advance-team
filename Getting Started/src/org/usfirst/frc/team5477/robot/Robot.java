@@ -39,8 +39,8 @@ public class Robot extends IterativeRobot
 	{
 		m_motor.set(m_joystick.getY());
 		
-		enc.encSet();
-		enc.encGet();
+		enc.encSet();  //set encoder values
+		enc.encGet();    // Get the encoder Values.
 		
 		i2c.sendReq();
 		
