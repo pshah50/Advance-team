@@ -2,20 +2,19 @@ package org.usfirst.frc.team5477.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Victor;
 
 
 public class Robot extends IterativeRobot
 {
 
-	private static final int kMotorPort = 0;
+	//private static final int kMotorPort = 0;
 	private static final int kJoystickPort = 0;
 
-	private SpeedController m_motor;
-	private Joystick m_joystick;
-
-	TestEncoder enc; 
+	Joystick m_joystick;
+	Victor motor;
+	
+	NUBotX_Encoder encoder; 
 		
 	Ultrasonic_I2C i2c;  // Object of the Ultrasonic_I2C class for getting distance.
 	
@@ -23,29 +22,33 @@ public class Robot extends IterativeRobot
 	
 	public void robotInit()
 	{
-		m_motor = new Spark(kMotorPort);
+		//m_motor = new Spark(kMotorPort);
+		motor =new Victor(0);
 		m_joystick = new Joystick(kJoystickPort);
-		enc = new TestEncoder();
+				
+		encoder = new NUBotX_Encoder();
 		i2c = new Ultrasonic_I2C();
 		navxmxp = new navXMxp_Sensors();
 	}
 
 	public void teleopInit()
 	{
-		
+		motor.set(1); // 1 for the forward and -1 for reverse.
 	}
 	
 	public void teleopPeriodic() 
 	{
-		m_motor.set(m_joystick.getY());
+		//m_motor.set(m_joystick.getY());
+		motor.set(m_joystick.getY());
 		
-		enc.encSet();  //set encoder values
-		enc.encGet();    // Get the encoder Values.
+		encoder.encSet();  //set encoder values
+		encoder.encGet();    // Get the encoder Values.
+		
 		
 		i2c.sendReq();
 		
 		navxmxp.getGyro();
 		
-		navxmxp.getAccelometer();
+		//navxmxp.getAccelometer();
 	}
 }

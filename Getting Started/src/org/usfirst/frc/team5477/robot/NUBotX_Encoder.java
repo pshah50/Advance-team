@@ -1,17 +1,17 @@
 package org.usfirst.frc.team5477.robot;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class TestEncoder 
+public class NUBotX_Encoder 
 {
 	Encoder encoder;
 	
-	public TestEncoder() 
-	{
-		encoder = new Encoder(0,1,false,Encoder.EncodingType.k4X);
+	public NUBotX_Encoder() 
+	{ 
+		encoder = new Encoder(0, 1, false, EncodingType.k4X);
 	}
-	
 	
 	public void encReset()
 	{

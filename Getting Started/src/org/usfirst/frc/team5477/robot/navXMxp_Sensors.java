@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;;
 public class navXMxp_Sensors
 {
 	AHRS ahrs;
-	
+
 	public navXMxp_Sensors()
 	{
 		try
@@ -24,11 +24,18 @@ public class navXMxp_Sensors
 	
 	public void getGyro()
 	{
-		SmartDashboard.putNumber("Gyro Angle:",ahrs.getAngle());
+		//ahrs.reset();
+		double angle =0, temp=0;
+		temp = ahrs.getAngle();
+		
+		angle = temp % 360;
+		SmartDashboard.putNumber("Gyro GetAngle:", ahrs.getAngle());
+		SmartDashboard.putNumber("Gyro Angle:",angle);
 		SmartDashboard.putNumber("Gyro Rate:",ahrs.getRate());
 		SmartDashboard.putNumber("Gyro Raw X:",ahrs.getRawGyroX());
 		SmartDashboard.putNumber("Gyro Raw Y:",ahrs.getRawGyroY());
 		SmartDashboard.putNumber("Gyro Raw Z:",ahrs.getRawGyroZ());
+		
 	}
 	
 	public void getAccelometer()
