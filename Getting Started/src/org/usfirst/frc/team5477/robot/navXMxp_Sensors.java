@@ -9,7 +9,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;;
 public class navXMxp_Sensors
 {
 	AHRS ahrs;
-
+	NU_Networktabel nt = new NU_Networktabel();
+	
 	public navXMxp_Sensors()
 	{
 		try
@@ -29,6 +30,12 @@ public class navXMxp_Sensors
 		temp = ahrs.getAngle();
 		
 		angle = temp % 360;
+		
+		
+		nt.GyroActualAngle.setDouble(ahrs.getAngle());
+		nt.GYroAngle.setDouble(angle);
+		nt.GyroRate.setDouble(ahrs.getRate());
+		
 		SmartDashboard.putNumber("Gyro GetAngle:", ahrs.getAngle());
 		SmartDashboard.putNumber("Gyro Angle:",angle);
 		SmartDashboard.putNumber("Gyro Rate:",ahrs.getRate());
@@ -40,6 +47,11 @@ public class navXMxp_Sensors
 	
 	public void getAccelometer()
 	{
+		nt.AccelerometerX.setDouble(ahrs.getRawAccelX());
+		nt.AccelerometerY.setDouble(ahrs.getRawAccelY());
+		nt.AccelerometerZ.setDouble(ahrs.getRawAccelZ());
+		
+		
 		SmartDashboard.putNumber("NavX-MXP Accelometer X:", ahrs.getRawAccelX());
 		SmartDashboard.putNumber("NavX-MXP Accelometer Y:", ahrs.getRawAccelY());
 		SmartDashboard.putNumber("NavX-MXP Accelometer Z:", ahrs.getRawAccelZ());

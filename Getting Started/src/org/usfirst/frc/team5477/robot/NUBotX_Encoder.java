@@ -29,6 +29,11 @@ public class NUBotX_Encoder
 	
 	public void encGet()
 	{
+		NU_Networktabel nt = new NU_Networktabel();
+		nt.EncoderDistance.setDouble(encoder.getDistance());
+		nt.EncoderRate.setDouble(encoder.getRate());
+		nt.EncoderStop.setBoolean(encoder.getStopped());
+		
 		SmartDashboard.putNumber("Distance", encoder.getDistance());
 		SmartDashboard.putNumber("Rate", encoder.getRate());
 		SmartDashboard.putBoolean("Stopped", encoder.getStopped());

@@ -48,6 +48,10 @@ public class Ultrasonic_I2C
 		{
 			s = s + ReceievData[i];
 		}
+		
+		NU_Networktabel nt = new NU_Networktabel();
+		nt.UltraSonic_Distance.setString(s);
+		
 		SmartDashboard.putString("Ultra Sonic Distance: ", s);
 	}
 }
