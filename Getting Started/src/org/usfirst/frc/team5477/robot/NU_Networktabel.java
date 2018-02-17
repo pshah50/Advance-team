@@ -21,6 +21,8 @@ public class NU_Networktabel  {
 	NetworkTableEntry EncoderRate;
 	NetworkTableEntry EncoderStop;
 	NetworkTableEntry UltraSonic_Distance;
+	NetworkTableEntry CVDistance;
+	NetworkTableEntry CVBool;
 
 	public NU_Networktabel()
 	{		
@@ -37,6 +39,7 @@ public class NU_Networktabel  {
 		EncoderRate = table.getEntry("EncoderRate");
 		EncoderStop = table.getEntry("EncoderStop");
 		UltraSonic_Distance = table.getEntry("UltraSonic_Distance");
+		
 	}
 	
 }

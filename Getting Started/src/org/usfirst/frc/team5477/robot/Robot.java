@@ -51,7 +51,7 @@ public class Robot extends IterativeRobot
 		
 		encoder.encSet();  //set encoder values
 		encoder.encGet();    // Get the encoder Values.
-				
+		 		
 		i2c.sendReq();
 				
 		navxmxp.getGyro();

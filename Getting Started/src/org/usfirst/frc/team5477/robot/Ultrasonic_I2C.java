@@ -13,7 +13,7 @@ public class Ultrasonic_I2C
 			
 	public Ultrasonic_I2C()
 	{
-		i2c = new I2C(I2C.Port.kOnboard, 84);
+		i2c = new I2C(I2C.Port.kOnboard, 84);  
 	   			 // Byte array for receiving data as distance in CM from Arduino
 	}
 	
